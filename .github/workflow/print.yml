@@ -13,7 +13,8 @@ jobs:
    - name: Print a Message
      run: echo "Hello! A push detected on main branch"
 
-
+   - name: Print a Second Message
+     run: echo "Hello! A Second Push detected on main branch" 
 
 
 
