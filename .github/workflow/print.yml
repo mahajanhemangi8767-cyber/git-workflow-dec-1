@@ -1,22 +1,13 @@
 name: Print Message
 on:
   push:
-   branches:
-     -main
-
+    branches:
+      - main
 
 jobs:
   say-hello:
-  runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
 
-  steps:
-   - name: Print a Message
-     run: echo "Hello! A push detected on main branch"
-
-   - name: Print a Second Message
-     run: echo "Hello! A Second Push detected on main branch" 
-
-
-
-
-     
+    steps:
+      - name: Print a Message
+        run: echo "Hello! A Push detected on Main Branch"
