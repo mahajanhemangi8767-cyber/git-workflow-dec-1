@@ -1,4 +1,5 @@
-name: Python CI
+name: React CI
+
 on:
   push:
     branches:
@@ -8,24 +9,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-      working-directory: react-appl
-    steps:
+  steps:
       - name: Checkout Repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v3
 
-      - name: Set up Node Js
-        uses: actions/setup-node@v6
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
 
-      - name: Install Node Dependencies
+      - name: Install Dependencies
         run: npm install
 
       - name: Build React App
-        run:  npm run build
-
-      - name: Upload an Artifact 
-      - uses: actions/upload-artifact@v4
-        with:
-          name: react-build
-          path: dist 
+        run: npm run build
