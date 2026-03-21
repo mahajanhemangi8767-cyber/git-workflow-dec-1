@@ -5,31 +5,24 @@ on:
       - main
 
 jobs:
-  python-test:
+  build:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v6
 
-      - name: Set up Python
-        uses: actions/setup-python@v6
+      - name: Set up Node Js
+        uses: actions/setup-node@v6
+
+      - name: Install Node Dependencies
+        run: npm install
+
+      - name: Build React App
+        run:  npm run build
+
+      - name: Upload an Artifact 
+      - uses: actions/upload-artifact@v4
         with:
-          python-version: '3.13' 
-
-      - name: Install Pipenv
-        run: |
-          python -m pip install --upgrade pip
-          pip install Pipenv
-
-      - name: Install Dependencies
-        run: |
-          pipenv install -r requirement.txt
-
-      - name: Run test
-        run: | 
-          pipenv run pytest -v
-push code on Github and check Actions
-
-you can see test cases executed via pipeline
-
+          name: react-build
+          path: dist 
