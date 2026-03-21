@@ -13,6 +13,9 @@ jobs:
     run:
       working-directory: react-appl
     steps:  
+      - name: Create file
+        run : echo "Hello from GitHub Actions" > output.txt 
+     
       - name: Checkout Repository
         uses: actions/checkout@v6
 
@@ -25,5 +28,9 @@ jobs:
       - name: Upload an Artifact
         run: actions/upload-artifact@v4
         with: 
-           name: react-build
-           path: dist 
+           name: my-artifact
+           path: output.txt
+
+
+
+
